@@ -1,2 +1,4 @@
 pekka;akkep
 jukka;akkuj
+matti;vanha
+maija;koira
