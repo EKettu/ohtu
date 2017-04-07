@@ -1,2 +1,7 @@
 /viikko4/TyhjaProjekti/build/
 /viikko4/WebLogin/.nb-gradle/
+#ignoroi build hakemisto
+build/
+#ignoroi .gradle
+/.gradle/
+/.nb-gradle/
