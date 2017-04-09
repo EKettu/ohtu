@@ -66,6 +66,37 @@ public class Stepdefs {
         pageHasContent("Give your credentials to login");
     }
 
+    @Given("^user with username \"([^\"]*)\" with password \"([^\"]*)\" and passwordConfirmation \"([^\"]*)\" is successfully created$")
+    public void user_with_username_with_password_and_passwordConfirmation_is_successfully_created(String username, String password, String passwordConfirmation) throws Throwable {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
+        element = driver.findElement(By.name("username"));
+        element.sendKeys(username);
+        element = driver.findElement(By.name("password"));
+        element.sendKeys(password);
+        element = driver.findElement(By.name("passwordConfirmation"));
+        element.sendKeys(passwordConfirmation);
+        element = driver.findElement(By.name("signup"));
+        element.submit();
+    }
+
+    @Given("^user with username \"([^\"]*)\" and password \"([^\"]*)\" and passwordConfirmation \"([^\"]*)\" is unsuccessfully created$")
+    public void user_with_username_and_password_and_passwordConfirmation_is_unsuccessfully_created(String username, String password, String passwordConfirmation) throws Throwable {
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
+        element = driver.findElement(By.name("username"));
+        element.sendKeys(username);
+        element = driver.findElement(By.name("password"));
+        element.sendKeys(password);
+        element = driver.findElement(By.name("passwordConfirmation"));
+        element.sendKeys(passwordConfirmation);
+        element = driver.findElement(By.name("signup"));
+        element.submit();
+
+    }
+
     @Given("^new user is selected$")
     public void new_user_is_selected() throws Throwable {
         driver.get(baseUrl);

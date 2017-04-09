@@ -46,7 +46,6 @@ public class AuthenticationService {
                 passwordOk = true;
             }
         }
-
         if(!passwordOk) {
             status.addError("password can not contain only letters");
         }
