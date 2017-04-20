@@ -5,3 +5,8 @@ build/
 #ignoroi .gradle
 /.gradle/
 /.nb-gradle/
+/viikko5/MockitoDemo/.nb-gradle/
+/viikko5/MatkakorttiMockito/.nb-gradle/
+/viikko5/VerkkokauppaSpring/.nb-gradle/
+/viikko5/IntJoukkoSovellus/.nb-gradle/
+/viikko5/Tennis/.nb-gradle/
