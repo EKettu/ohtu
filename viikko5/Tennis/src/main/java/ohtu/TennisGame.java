@@ -1,24 +1,33 @@
 package ohtu;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TennisGame {
 
-    private int m_score1 = 0;
-    private int m_score2 = 0;
+    private int player1_score = 0;
+    private int player2_score = 0;
     private String player1Name;
     private String player2Name;
     private String score;
+    private Map<Integer, String> scores;
 
     public TennisGame(String player1Name, String player2Name) {
         this.player1Name = player1Name;
         this.player2Name = player2Name;
         score = "";
+        scores = new HashMap<>();
+        scores.put(0, "Love");
+        scores.put(1, "Fifteen");
+        scores.put(2, "Thirty");
+        scores.put(3, "Forty");
     }
 
     public void wonPoint(String playerName) {
         if (playerName == "player1") {
-            m_score1 += 1;
+            player1_score += 1;
         } else {
-            m_score2 += 1;
+            player2_score += 1;
         }
     }
 
@@ -34,44 +43,32 @@ public class TennisGame {
     }
 
     private boolean checkIfEven() {
-        return (m_score1 == m_score2);
+        return (player1_score == player2_score);
     }
 
     private String evenScore() {
-        switch (m_score1) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            case 3:
-                score = "Forty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
+        if (0 <= player1_score && player1_score < 4) {
+            score = scores.get(player1_score) + "-All";
+        } else {
+            score = "Deuce";
         }
         return score;
     }
 
     private boolean checkIfFourOrOVer() {
-        return (m_score1 >= 4 || m_score2 >= 4);
+        return (player1_score >= 4 || player2_score >= 4);
     }
 
     private String advantageOrWin() {
-        int minusResult = m_score1 - m_score2;
+        int minusResult = player1_score - player2_score;
         if (minusResult == 1) {
-            score = "Advantage player1";
+            score = "Advantage " + player1Name;
         } else if (minusResult == -1) {
-            score = "Advantage player2";
+            score = "Advantage " + player2Name;;
         } else if (minusResult >= 2) {
-            score = "Win for player1";
+            score = "Win for " + player1Name;
         } else {
-            score = "Win for player2";
+            score = "Win for " + player2Name;;
         }
         return score;
     }
@@ -87,29 +84,16 @@ public class TennisGame {
 
     private int setTempScore(int index, int tempScore) {
         if (index == 1) {
-            tempScore = m_score1;
+            tempScore = player1_score;
         } else {
             score += "-";
-            tempScore = m_score2;
+            tempScore = player2_score;
         }
         return tempScore;
     }
 
     private String setScore(int tempScore) {
-        switch (tempScore) {
-            case 0:
-                score += "Love";
-                break;
-            case 1:
-                score += "Fifteen";
-                break;
-            case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
-        }
+        score += scores.get(tempScore);
         return score;
     }
 

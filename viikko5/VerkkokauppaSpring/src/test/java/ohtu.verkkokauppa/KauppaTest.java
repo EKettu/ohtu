@@ -48,7 +48,7 @@ public class KauppaTest {
         Kauppa k = new Kauppa(varasto, pankki, viite);
 
         k.aloitaAsiointi();
-        k.lisaaKoriin(1);   
+        k.lisaaKoriin(1);
         k.tilimaksu("pekka", "12345");
         //String nimi, int viitenumero, String tililta, String tilille, int sum
         verify(pankki).tilisiirto(eq("pekka"), eq(42), eq("12345"), anyString(), eq(5));
@@ -110,7 +110,7 @@ public class KauppaTest {
         when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));
         when(varasto.saldo(2)).thenReturn(0);
         when(varasto.haeTuote(2)).thenReturn(new Tuote(2, "porkkana", 3));
- 
+
         Kauppa k = new Kauppa(varasto, pankki, viite);
 
         k.aloitaAsiointi();
@@ -172,8 +172,8 @@ public class KauppaTest {
 
         verify(pankki).tilisiirto(eq("liisa"), eq(2), eq("678910"), anyString(), eq(5));
     }
-    
-        @Test
+
+    @Test
     public void tuotteenPoistamisenJalkeenPankinMetodiaTilisiirtoKutsutaanOikein() {
         Pankki pankki = mock(Pankki.class);
 
@@ -185,7 +185,7 @@ public class KauppaTest {
         when(varasto.haeTuote(1)).thenReturn(new Tuote(1, "maito", 5));
         when(varasto.saldo(2)).thenReturn(6);
         when(varasto.haeTuote(2)).thenReturn(new Tuote(2, "porkkana", 3));
- 
+
         Kauppa k = new Kauppa(varasto, pankki, viite);
 
         k.aloitaAsiointi();
